@@ -1,14 +1,17 @@
 from weather_api_caller import Weather_API_caller
+from error_notifier import error_notifier
 from datetime import datetime, timedelta
-import functions_framework
 from google.cloud import storage
+import functions_framework
 import pandas as pd
 import argparse
 import logging
 import json
-from error_notifier import error_notifier
+import os
 
 EMAIL_RECIPIENT="alvaro.larraya1@gmail.com"
+EMAIL_PASSWORD = os.environ["EMAIL_PASSWORD"]
+API_KEY = os.environ["API_KEY"]
 
 @error_notifier(EMAIL_RECIPIENT, EMAIL_PASSWORD)
 @functions_framework.http
