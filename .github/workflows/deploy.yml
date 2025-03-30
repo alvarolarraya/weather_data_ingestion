@@ -26,3 +26,4 @@ jobs:
             --allow-unauthenticated \
             --entry-point=daily_call \
             --region=europe-west3
+            --source=src
