@@ -26,4 +26,6 @@ jobs:
             --allow-unauthenticated \
             --entry-point=daily_call \
             --region=europe-west3 \
-            --source=src
+            --source=src \
+            --set-secrets=EMAIL_PASSWORD=projects/vibrant-shell-455019-h3/secrets/email_password/versions/latest \
+            --set-secrets=API_KEY=projects/vibrant-shell-455019-h3/secrets/api_key/versions/latest
