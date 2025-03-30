@@ -1,0 +1,28 @@
+name: Deploy Cloud Function
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+      - name: Deploy Cloud Function
+        run: |
+          gcloud functions deploy daily_weather_ingestion \
+            --runtime python311 \
+            --trigger-http \
+            --allow-unauthenticated \
+            --entry-point=daily_call \
+            --region=eu-west3
