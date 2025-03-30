@@ -23,6 +23,7 @@ jobs:
           gcloud functions deploy daily_weather_ingestion \
             --runtime python311 \
             --trigger-http \
+            --service_account weather-sa@vibrant-shell-455019-h3.iam.gserviceaccount.com \
             --allow-unauthenticated \
             --entry-point=daily_call \
             --region=europe-west3 \
