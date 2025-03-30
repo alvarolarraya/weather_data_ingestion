@@ -36,5 +36,4 @@ jobs:
           gcloud scheduler jobs create http weather-job \
             --schedule "0 7 * * *" \ 
             --uri "https://europe-west3-vibrant-shell-455019-h3.cloudfunctions.net/daily_weather_ingestion" \
-            --http-method GET \
-            --service-account weather-sa@vibrant-shell-455019-h3.iam.gserviceaccount.com
+            --http-method GET
