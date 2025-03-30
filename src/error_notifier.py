@@ -8,7 +8,7 @@ SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 EMAIL_SENDER = "alvaro.larraya1@gmail.com"
 
-def send_email(to_email, subject, body):
+def send_email(to_email, subject, body, email_password):
     try:
         msg = MIMEMultipart()
         msg["From"] = EMAIL_SENDER
@@ -18,13 +18,13 @@ def send_email(to_email, subject, body):
 
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
         server.starttls()
-        server.login(EMAIL_SENDER, EMAIL_PASSWORD)
+        server.login(EMAIL_SENDER, email_password)
         server.sendmail(EMAIL_SENDER, to_email, msg.as_string())
         server.quit()
     except Exception as e:
         print(f"Error sending mail: {e}")
 
-def error_notifier(email_recipient):
+def error_notifier(email_recipient, email_password):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):

@@ -10,7 +10,7 @@ from error_notifier import error_notifier
 
 EMAIL_RECIPIENT="alvaro.larraya1@gmail.com"
 
-@error_notifier(EMAIL_RECIPIENT)
+@error_notifier(EMAIL_RECIPIENT, EMAIL_PASSWORD)
 @functions_framework.http
 def daily_call(request):
     yesterday = datetime.now() - timedelta(days=1)
