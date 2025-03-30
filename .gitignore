@@ -1,3 +1,4 @@
 secrets.env
-src/responses*
+src/responses/*
 *__pycache__*
+!src/responses/.gitkeep
